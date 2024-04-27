@@ -28,13 +28,13 @@ public class SignUpUI extends javax.swing.JFrame {
 
         Title = new javax.swing.JLabel();
         sub1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        UsernameField = new javax.swing.JTextField();
         sub2 = new javax.swing.JLabel();
         sub3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         LoginButton = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        PasswordField2 = new javax.swing.JPasswordField();
+        PasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(500, 500));
@@ -51,10 +51,10 @@ public class SignUpUI extends javax.swing.JFrame {
         getContentPane().add(sub1);
         sub1.setBounds(50, 90, 80, 19);
 
-        jTextField1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jTextField1.setText("Enter a Username");
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(50, 110, 430, 50);
+        UsernameField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        UsernameField.setText("Enter a Username");
+        getContentPane().add(UsernameField);
+        UsernameField.setBounds(50, 110, 430, 50);
 
         sub2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         sub2.setText("Password");
@@ -84,13 +84,13 @@ public class SignUpUI extends javax.swing.JFrame {
         getContentPane().add(LoginButton);
         LoginButton.setBounds(160, 380, 75, 23);
 
-        jPasswordField1.setText("jPasswordField1");
-        getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(50, 270, 430, 40);
+        PasswordField2.setText("jPasswordField1");
+        getContentPane().add(PasswordField2);
+        PasswordField2.setBounds(50, 270, 430, 40);
 
-        jPasswordField2.setText("jPasswordField1");
-        getContentPane().add(jPasswordField2);
-        jPasswordField2.setBounds(50, 200, 430, 40);
+        PasswordField1.setText("jPasswordField1");
+        getContentPane().add(PasswordField1);
+        PasswordField1.setBounds(50, 200, 430, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,11 +137,11 @@ public class SignUpUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginButton;
+    private javax.swing.JPasswordField PasswordField1;
+    private javax.swing.JPasswordField PasswordField2;
     private javax.swing.JLabel Title;
+    private javax.swing.JTextField UsernameField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel sub1;
     private javax.swing.JLabel sub2;
     private javax.swing.JLabel sub3;
