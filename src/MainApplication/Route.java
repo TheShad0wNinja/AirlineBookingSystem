@@ -1,3 +1,5 @@
+package MainApplication;
+
 import java.io.Serializable;
 import java.util.Objects;
 

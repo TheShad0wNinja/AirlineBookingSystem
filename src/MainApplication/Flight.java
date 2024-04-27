@@ -1,3 +1,5 @@
+package MainApplication;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -68,7 +70,7 @@ public class Flight implements Serializable {
 
     @Override
     public String toString() {
-        return "Flight{" + "route=" + route + ", flightNum='" + flightNum + '\'' + '}';
+        return "MainApplication.Flight{" + "route=" + route + ", flightNum='" + flightNum + '\'' + '}';
     }
 
     public ArrayList<Seat> viewAvailableSeats() {

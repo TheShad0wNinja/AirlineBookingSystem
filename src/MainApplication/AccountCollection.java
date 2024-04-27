@@ -1,10 +1,17 @@
+package MainApplication;
+
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AccountCollection {
     private ArrayList<Account> accounts;
+    final private BookingCollection bookingCollection;
+    final private FlightCollection flightCollection;
 
     public AccountCollection(BookingCollection bookingCollection, FlightCollection flightCollection) {
+        this.bookingCollection = bookingCollection;
+        this.flightCollection = flightCollection;
         try {
             accounts = DataStore.loadData("Accounts.txt");
         } catch (IOException e) {
@@ -15,11 +22,11 @@ public class AccountCollection {
         if (accounts != null)
             for (Account account : accounts) {
                 if (account instanceof Passenger passenger) {
-                    System.out.println("Passenger " + passenger.getUsername());
+                    System.out.println("MainApplication.Passenger " + passenger.getUsername());
                     passenger.setFlightCollection(flightCollection);
                     passenger.setBookingCollection(bookingCollection);
                 } else if (account instanceof Admin admin) {
-                    System.out.println("Admin " + admin.getUsername());
+                    System.out.println("MainApplication.Admin " + admin.getUsername());
                     admin.setFlightCollection(flightCollection);
                 }
             }
@@ -29,11 +36,17 @@ public class AccountCollection {
         return accounts;
     }
 
-    //TODO: ADD PARAMETERS TO CREATE ACCOUNT
-    //TODO: ADD ERROR HANDING FOR INVALID INPUT
-    public void addAccount(Account newAccount) {
+    public Account addAccount(String name, String username, String password, LocalDate dob, boolean admin) {
+        Account newAccount;
+        if (admin)
+            newAccount = new Admin(flightCollection, name , username, password, dob);
+        else
+            newAccount = new Passenger(flightCollection, bookingCollection, name, username, password, dob);
+
         accounts.add(newAccount);
+
         DataStore.saveData("Accounts.txt", accounts);
+        return newAccount;
     }
 
     //TODO: ADD ERROR HANDING FOR INVALID INPUT

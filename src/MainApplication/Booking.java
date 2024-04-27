@@ -1,3 +1,5 @@
+package MainApplication;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -76,6 +78,6 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-        return "Booking{" + "bookingCode='" + bookingCode + '\'' + ", tickets=" + tickets + ", passenger=" + passenger + ", date=" + date + '}';
+        return "MainApplication.Booking{" + "bookingCode='" + bookingCode + '\'' + ", tickets=" + tickets + ", passenger=" + passenger + ", date=" + date + '}';
     }
 }
