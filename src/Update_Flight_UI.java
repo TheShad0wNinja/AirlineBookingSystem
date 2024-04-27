@@ -29,16 +29,18 @@ public class Update_Flight_UI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         Arrival_Date = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        Seat = new javax.swing.JTable();
-        Economy = new javax.swing.JRadioButton();
-        First_class = new javax.swing.JRadioButton();
-        Business_class = new javax.swing.JRadioButton();
         Arrival = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        Seats = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        Seat1 = new javax.swing.JTable();
+        Economy1 = new javax.swing.JRadioButton();
+        First_class1 = new javax.swing.JRadioButton();
+        Business_class1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,17 +50,13 @@ public class Update_Flight_UI extends javax.swing.JFrame {
 
         jLabel2.setText("   Update Ticket:");
 
-        jTextField1.setText("Enter Your Ticket");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Add/Remove Multiple Seats:");
-
         Arrival_Date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("MM/dd/yyyy"))));
-        Arrival_Date.setText("MM/DD/YYYY");
         Arrival_Date.setToolTipText("");
         Arrival_Date.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -81,51 +79,51 @@ public class Update_Flight_UI extends javax.swing.JFrame {
             }
         });
 
-        Seat.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"1", " 1 ", " 1 ", " 1", " 1", " 1", "1 ", "1"},
-                {"2 ", "2", "2", "2", "2", "2", "2", "2"},
-                {"3", "3", "3", "3", "3", "3", "3", "3"},
-                {"4", "4", "4", "4", "4", "4", "4", "4"}
-            },
-            new String [] {
-                "A", "B", "C", "D", "F", "G", "H", "I"
-            }
-        ));
-        Seat.setColumnSelectionAllowed(true);
-        Seat.getTableHeader().setReorderingAllowed(false);
-        Seat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SeatKeyPressed(evt);
-            }
-        });
-        jScrollPane4.setViewportView(Seat);
-
-        buttonGroup1.add(Economy);
-        Economy.setText("Economy");
-
-        buttonGroup1.add(First_class);
-        First_class.setText("First class");
-        First_class.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                First_classActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(Business_class);
-        Business_class.setText("Business class");
-        Business_class.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Business_classActionPerformed(evt);
-            }
-        });
-
         Arrival.setText("    Arrival:");
 
         jButton2.setText("Remove Flight");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        Seats.setText("Seat Type:");
+
+        jLabel4.setText("Number of rows:");
+
+        jTextField2.setText("1");
+
+        Seat1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"1", " 1 ", " 1 ", " 1", " 1", " 1", "1 ", "1"}
+            },
+            new String [] {
+                "A", "B", "C", "D", "F", "G", "H", "I"
+            }
+        ));
+        Seat1.setColumnSelectionAllowed(true);
+        Seat1.getTableHeader().setReorderingAllowed(false);
+        Seat1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Seat1KeyPressed(evt);
+            }
+        });
+        jScrollPane5.setViewportView(Seat1);
+
+        Economy1.setText("Economy");
+
+        First_class1.setText("First class");
+        First_class1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                First_class1ActionPerformed(evt);
+            }
+        });
+
+        Business_class1.setText("Business class");
+        Business_class1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Business_class1ActionPerformed(evt);
             }
         });
 
@@ -142,27 +140,46 @@ public class Update_Flight_UI extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Business_class, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(Economy, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(First_class, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Arrival_Date, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(Arrival_Date, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(104, 104, 104)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Seats, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(Economy1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(38, 38, 38)
+                                        .addComponent(Business_class1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(54, 54, 54)
+                                        .addComponent(First_class1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(90, 90, 90)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,19 +194,20 @@ public class Update_Flight_UI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Arrival, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Arrival_Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(Seats, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Economy1)
+                    .addComponent(Business_class1)
+                    .addComponent(First_class1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Economy)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(First_class)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Business_class))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -221,21 +239,21 @@ public class Update_Flight_UI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void SeatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SeatKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeatKeyPressed
-
-    private void First_classActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_First_classActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_First_classActionPerformed
-
-    private void Business_classActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Business_classActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Business_classActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void Seat1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Seat1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Seat1KeyPressed
+
+    private void First_class1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_First_class1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_First_class1ActionPerformed
+
+    private void Business_class1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Business_class1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Business_class1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,17 +293,19 @@ public class Update_Flight_UI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Arrival;
     private javax.swing.JFormattedTextField Arrival_Date;
-    private javax.swing.JRadioButton Business_class;
-    private javax.swing.JRadioButton Economy;
-    private javax.swing.JRadioButton First_class;
-    private javax.swing.JTable Seat;
+    private javax.swing.JRadioButton Business_class1;
+    private javax.swing.JRadioButton Economy1;
+    private javax.swing.JRadioButton First_class1;
+    private javax.swing.JTable Seat1;
+    private javax.swing.JLabel Seats;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
