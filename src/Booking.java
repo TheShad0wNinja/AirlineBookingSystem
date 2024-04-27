@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Booking {
+public class Booking implements Serializable {
     private String bookingCode;
     private ArrayList<Ticket> tickets;
     private Passenger passenger;
@@ -71,5 +72,10 @@ public class Booking {
         }
 
         return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" + "bookingCode='" + bookingCode + '\'' + ", tickets=" + tickets + ", passenger=" + passenger + ", date=" + date + '}';
     }
 }

@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Route {
+public class Route implements Serializable {
 
     String origin;
     String destination;

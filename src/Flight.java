@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Flight {
+public class Flight implements Serializable {
     private Route route;
     private ArrayList<Seat> seats;
     private LocalDateTime departure;
@@ -65,32 +66,20 @@ public class Flight {
         return total;
     }
 
-    public void viewAvailableSeats() {
-        StringBuilder out = new StringBuilder();
+    @Override
+    public String toString() {
+        return "Flight{" + "route=" + route + ", flightNum='" + flightNum + '\'' + '}';
+    }
 
-        out.append("-------------------------------------------------------------------\n");
+    public ArrayList<Seat> viewAvailableSeats() {
+        ArrayList<Seat> s = new ArrayList<>();
 
-        out.append(String.format("| %-15s | %-8s | %-15s |\n", "Seat Number", "Fare", "Type"));
-
-        out.append("-------------------------------------------------------------------\n");
-
-        String type;
         for (Seat seat : seats) {
-            if (seat.getOccupied()) continue;
-            type = switch (seat.getType()) {
-                case ECONOMY -> "Economy";
-                case BUSINESS -> "Business";
-                case FIRST_CLASS -> "First Class";
-            };
-            out.append(String.format("| %-15s | %-8.2f | %-15s |\n",
-                    String.format("%c%d", seat.getLetter(), seat.getNumber()),
-                    seat.getFare(),
-                    type));
+            if (!seat.getOccupied())
+                s.add(seat);
         }
 
-        out.append("-------------------------------------------------------------------\n");
-
-        System.out.println(out);
+        return s;
     }
 
     public Seat searchSeat(char letter, int number, Seat.SeatType type) {

@@ -1,4 +1,6 @@
-public class Seat {
+import java.io.Serializable;
+
+public class Seat implements Serializable {
     public static enum SeatType {
         ECONOMY,
         BUSINESS,

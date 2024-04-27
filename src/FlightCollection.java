@@ -1,23 +1,33 @@
+import java.io.*;
 import java.util.ArrayList;
 
 public class FlightCollection {
 
-    final private ArrayList<Flight> flights;
+    private ArrayList<Flight> flights;
 
     public FlightCollection() {
-        this.flights = new ArrayList<>();
+        try {
+            flights = DataStore.loadData("Flights.txt");
+        } catch (FileNotFoundException e) {
+            flights = new ArrayList<>();
+        } catch (IOException e) {
+            System.out.println("ERRROR");
+            throw new RuntimeException(e);
+        }
     }
 
     //TODO: ADD THE PARAMETERS REQUIRED TO CREATE A NEW FLIGHT
-    public void addFlight() {
+    public void addFlight(Flight f) {
         //TODO: VALIDATION AND ERROR FOR INVALID INPUT
-//        this.flights.add(f);
+        this.flights.add(f);
+        DataStore.saveData("Flights.txt", flights);
     }
 
     //TODO: THROW ERROR IF INVALID CODE
     public Flight removeFlight(String c) {
         for (int i = 0; i < flights.size(); i++) {
             if (flights.get(i).getFlightNum().equals(c)) {
+                DataStore.saveData("Flights.txt", flights);
                 return flights.remove(i);
             }
 
@@ -82,4 +92,7 @@ public class FlightCollection {
     //TODO: ERRORS FOR INVALID INPUTS
     public void updateFlight(String c, Flight newFlight) {
     }
+
+
+
 }

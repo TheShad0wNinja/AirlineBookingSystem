@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public abstract class Account {
+public abstract class Account implements Serializable {
     private String name;
     private String username;
     private String password;
@@ -72,6 +73,6 @@ public abstract class Account {
 
     @Override
     public String toString() {
-        return String.format("[1]Name: %s\n[2]Username: %s\n[3]Password: %s\n[4]LocalDate Of Birth: %s", name, username, password, dob.toString());
+        return "Account{" + "name='" + name + '\'' + ", username='" + username + '\'' + ", password='" + password + '\'' + '}';
     }
 }

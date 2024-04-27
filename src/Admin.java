@@ -2,8 +2,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Admin extends Account {
-    final private FlightCollection flightCollection;
+    private transient FlightCollection flightCollection;
 
+    public Admin(
+            String name,
+            String username,
+            String password,
+            LocalDate dob) {
+        super(name, username, password, dob);
+        this.flightCollection = null;
+    }
     public Admin(
             FlightCollection flightCollection,
             String name,
@@ -14,9 +22,13 @@ public class Admin extends Account {
         this.flightCollection = flightCollection;
     }
 
+    public void setFlightCollection(FlightCollection flightCollection) {
+        this.flightCollection = flightCollection;
+    }
+
     //TODO: ADD THE PARAMETERS REQUIRED TO CREATE A NEW FLIGHT
-    public void addNewFlight() {
-//        flightCollection.addFlight();
+    public void addNewFlight(Flight f) {
+        flightCollection.addFlight(f);
     }
 
     public Flight removeFlight(String c) {

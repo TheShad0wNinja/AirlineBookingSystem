@@ -1,13 +1,27 @@
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Passenger extends Account{
-    final private BookingCollection bookingCollection;
-    final private FlightCollection flightCollection;
+    private transient BookingCollection bookingCollection;
+    private transient FlightCollection flightCollection;
 
+    public Passenger(String name, String username, String password, LocalDate dob) {
+        super(name, username, password, dob);
+        this.bookingCollection = null;
+        this.flightCollection = null;
+    }
     public Passenger( FlightCollection flightCollection, BookingCollection bookingCollection, String name, String username, String password, LocalDate dob) {
         super(name, username, password, dob);
         this.bookingCollection = bookingCollection;
+        this.flightCollection = flightCollection;
+    }
+
+    public void setBookingCollection(BookingCollection bookingCollection) {
+        this.bookingCollection = bookingCollection;
+    }
+
+    public void setFlightCollection(FlightCollection flightCollection) {
         this.flightCollection = flightCollection;
     }
 
@@ -15,7 +29,7 @@ public class Passenger extends Account{
         return bookingCollection.searchPassengerBookings(this).size();
     }
 
-    public void addBooking (Flight flight, ArrayList<Seat> seats) {
+    public void addBooking (Flight flight, ArrayList<Seat> seats) throws IOException {
         bookingCollection.addBooking(this);
     }
 
