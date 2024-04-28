@@ -31,8 +31,8 @@ public class Passenger extends Account{
         return bookingCollection.searchPassengerBookings(this).size();
     }
 
-    public void addBooking (Flight flight, ArrayList<Seat> seats) throws IOException {
-        bookingCollection.addBooking(this);
+    public Booking addBooking (Flight flight, Seat seat, String passengerName) throws IOException {
+        return bookingCollection.addBooking(this, flight, seat, passengerName);
     }
 
     public void removeBooking(String code) {
@@ -46,18 +46,17 @@ public class Passenger extends Account{
         return bookingCollection.searchBooking(code) != null;
     }
 
-    public void addBookingTicket(String bookingCode, Flight flight, Seat seat, String name) {
-        bookingCollection.addBookingTicket(bookingCode, flight, seat, name);
-    }
-
-    public void removeBookingTicket(String bookingCode, String ticketCode) {
-        bookingCollection.removeBookingTicket(bookingCode, ticketCode);
-    }
-
     public Flight searchFlight(String s) {
         return flightCollection.searchFlight(s);
     }
     public ArrayList<Flight> viewAvailableFlights() {
         return flightCollection.getAvailableFlights();
+    }
+
+    public void updateUser(String username, String name, String password, LocalDate dob) {
+        this.setName(name);
+        this.setUsername(username);
+        this.setPassword(password);
+        this.setDob(dob);
     }
 }

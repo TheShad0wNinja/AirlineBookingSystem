@@ -16,10 +16,13 @@ public class BookingCollection {
         }
     }
 
-    public void addBooking(Passenger passenger) throws IOException {
+    public Booking addBooking(Passenger passenger, Flight flight, Seat seat, String passengerName) throws IOException {
         Booking newBooking = new Booking(passenger, LocalDate.now());
+        seat.setOccupied(true);
+        newBooking.reserveTicket(flight, seat, passengerName);
         bookings.add(newBooking);
         DataStore.saveData("Bookings.txt", bookings);
+        return newBooking;
     }
 
     //TODO: Implement
@@ -31,7 +34,7 @@ public class BookingCollection {
         for (int i = 0; i < bookings.size(); i++) {
             if (bookings.get(i).getBookingCode().equals(bookingCode)) {
                 bookings.remove(i);
-                DataStore.saveData("Bookings", bookings);
+                DataStore.saveData("Bookings.txt", bookings);
                 return;
             }
         }
@@ -50,25 +53,6 @@ public class BookingCollection {
             if (booking.getPassenger().equals(passenger))
                 passengerBookings.add(booking);
         return passengerBookings;
-    }
-
-    public void addBookingTicket(String bookingCode, Flight flight, Seat seat, String passengerName) {
-        //TODO: implement error for invalid code
-        Booking booking = searchBooking(bookingCode);
-        booking.reserveTicket(flight, seat, passengerName);
-        DataStore.saveData("Bookings", bookings);
-    }
-
-    public void removeBookingTicket(String bookingCode, String ticketCode){
-        //TODO: implement error for invalid code
-        Booking booking = searchBooking(bookingCode);
-        //TODO: error if invalid ticket code
-        for (Ticket ticket : booking.getTickets()) {
-            if (ticket.getTicketCode().equals(ticketCode)) {
-                booking.getTickets().remove(ticket);
-                DataStore.saveData("Bookings", bookings);
-            }
-        }
     }
 
     public ArrayList<Booking> getBookings() {

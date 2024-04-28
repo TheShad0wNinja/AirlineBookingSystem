@@ -165,7 +165,7 @@ public class SignUpUI extends MainFrame {
         }
 
         System.out.println(auth.getCurrentAccount());
-//        new PassengerUI();
+        new PassengerUI(auth);
         this.dispose();
     }
 

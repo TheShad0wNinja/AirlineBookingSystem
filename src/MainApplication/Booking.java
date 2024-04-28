@@ -7,17 +7,17 @@ import java.util.Random;
 
 public class Booking implements Serializable {
     private String bookingCode;
-    private ArrayList<Ticket> tickets;
+    private Ticket ticket;
     private Passenger passenger;
     private LocalDate date;
 
     public Booking(Passenger passenger, LocalDate date) {
-        this(generateRandomCode(10), new ArrayList<>(), passenger, date);
+        this(generateRandomCode(10), null, passenger, date);
     }
 
-    public Booking(String bookingCode, ArrayList<Ticket> tickets, Passenger passenger, LocalDate date) {
+    public Booking(String bookingCode, Ticket ticket, Passenger passenger, LocalDate date) {
         this.bookingCode = bookingCode;
-        this.tickets = tickets;
+        this.ticket = ticket;
         this.passenger = passenger;
         this.date = date;
     }
@@ -26,7 +26,7 @@ public class Booking implements Serializable {
     public void reserveTicket(Flight flight, Seat seat, String passengerName){
         Ticket newTicket = new Ticket(generateRandomCode(8), flight, seat, passengerName);
 
-        tickets.add(newTicket);
+        ticket = newTicket;
     }
 
 
@@ -38,12 +38,12 @@ public class Booking implements Serializable {
         this.bookingCode = bookingCode;
     }
 
-    public ArrayList<Ticket> getTickets() {
-        return tickets;
+    public Ticket getTicket() {
+        return ticket;
     }
 
-    public void setTickets(ArrayList<Ticket> tickets) {
-        this.tickets = tickets;
+    public void setTickets(Ticket ticket) {
+        this.ticket = ticket;
     }
 
     public Passenger getPassenger() {
@@ -78,6 +78,6 @@ public class Booking implements Serializable {
 
     @Override
     public String toString() {
-        return "MainApplication.Booking{" + "bookingCode='" + bookingCode + '\'' + ", tickets=" + tickets + ", passenger=" + passenger + ", date=" + date + '}';
+        return "MainApplication.Booking{" + "bookingCode='" + bookingCode + '\'' + ", tickets=" + ticket + ", passenger=" + passenger + ", date=" + date + '}';
     }
 }

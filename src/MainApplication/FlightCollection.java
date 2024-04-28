@@ -1,7 +1,9 @@
 package MainApplication;
 
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class FlightCollection {
 
@@ -18,14 +20,45 @@ public class FlightCollection {
         }
     }
 
-    //TODO: ADD THE PARAMETERS REQUIRED TO CREATE A NEW FLIGHT
     public void addFlight(Flight f) {
-        //TODO: VALIDATION AND ERROR FOR INVALID INPUT
-        this.flights.add(f);
+        flights.add(f);
         DataStore.saveData("Flights.txt", flights);
     }
 
-    //TODO: THROW ERROR IF INVALID CODE
+    public void addFlight(String origin, String dest, int ecoRow, int ecoCol, float ecoFare, int busRow, int busCol,
+                             float busFare, int firstRow, int firstCol, float firstFare, LocalDateTime dep,
+                             LocalDateTime arrival) {
+        Route route = new Route(origin, dest);
+
+        ArrayList<Seat> seats = new ArrayList<>();
+
+        for (int i = 0; i < ecoCol; i++) {
+            char letter = (char) ('A' + i);
+            for (int j = 1; j <= ecoRow; j++) {
+                seats.add(new Seat(ecoFare, Seat.SeatType.ECONOMY, letter, j) );
+            }
+        }
+
+        for (int i = 0; i < busCol; i++) {
+            char letter = (char) ('A' + i);
+            for (int j = 1; j <= busRow; j++) {
+                seats.add(new Seat(busFare, Seat.SeatType.BUSINESS, letter, j) );
+            }
+        }
+
+        for (int i = 0; i < firstCol; i++) {
+            char letter = (char) ('A' + i);
+            for (int j = 1; j <= firstRow; j++) {
+                seats.add(new Seat(firstFare, Seat.SeatType.FIRST_CLASS, letter, j) );
+            }
+        }
+
+        Flight flight = new Flight(route, seats, dep, arrival, generateRandomCode(5));
+
+        this.flights.add(flight);
+        DataStore.saveData("Flights.txt", flights);
+    }
+
     public Flight removeFlight(String c) {
         for (int i = 0; i < flights.size(); i++) {
             if (flights.get(i).getFlightNum().equals(c)) {
@@ -83,18 +116,32 @@ public class FlightCollection {
                     count++;
             }
 
-            if (count < flight.getSeats().size())
+            if (count <= flight.getSeats().size())
                 availableFlights.add(flight);
         }
 
         return availableFlights;
     }
 
-    //TODO: CREATE FUNCTIONS, HAVE IT COMPARE VALUES WITH THE PASSED FLIGHT AND EDIT
-    //TODO: ERRORS FOR INVALID INPUTS
-    public void updateFlight(String c, Flight newFlight) {
+    public void updateFlight(Flight flight, String origin, String dept, LocalDateTime arrival, LocalDateTime departure) {
+        flight.setRoute(new Route(origin, dept));
+        flight.setArrival(arrival);
+        flight.setDeparture(departure);
+        DataStore.saveData("Flights.txt", flights);
     }
 
 
+    private static String generateRandomCode(int length) {
+        String candidateChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        int candidateCharsLength = candidateChars.length();
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+
+        for (int i = 0; i < length; i++) {
+            sb.append(candidateChars.charAt(random.nextInt(candidateCharsLength)));
+        }
+
+        return sb.toString();
+    }
 
 }

@@ -9,17 +9,17 @@ public class Seat implements Serializable {
         FIRST_CLASS,
     };
 
-    private Double fare;
+    private float fare;
     private SeatType type;
     private char letter;
     private int number;
     private boolean occupied;
 
-    public Seat(Double fare, SeatType type, char letter, int number) {
+    public Seat(float fare, SeatType type, char letter, int number) {
         this(fare, type, letter, number, false);
     }
 
-    public Seat(Double fare, SeatType type, char letter, int number, boolean occupied) {
+    public Seat(float fare, SeatType type, char letter, int number, boolean occupied) {
         this.fare = fare;
         this.type = type;
         this.letter = letter;
@@ -27,7 +27,7 @@ public class Seat implements Serializable {
         this.occupied = occupied;
     }
 
-    public Double getFare() {
+    public float getFare() {
         return fare;
     }
 
@@ -51,7 +51,7 @@ public class Seat implements Serializable {
         this.occupied = Occupied;
     }
 
-    public void setFare(Double Fare) {
+    public void setFare(float Fare) {
         this.fare = Fare;
     }
 

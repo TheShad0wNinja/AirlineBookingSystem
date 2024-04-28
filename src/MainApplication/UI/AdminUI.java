@@ -132,19 +132,23 @@ public class AdminUI extends MainFrame {
     }
 
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        new ViewFlightsUI(auth);
+        this.dispose();
     }
 
     private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        new AddFlightUI(auth);
+        this.dispose();
     }
 
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        new RemoveFlightUI(auth);
+        this.dispose();
     }
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        new UpdateFlightUI(auth);
+        this.dispose();
     }
 
     private void ReportBtnActionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,7 +158,7 @@ public class AdminUI extends MainFrame {
 
     private void LogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {
         auth.logout();
-        new SignUpUI(auth);
+        new SignInUI(auth);
         this.dispose();
     }
 

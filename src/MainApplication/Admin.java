@@ -1,6 +1,7 @@
 package MainApplication;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Admin extends Account {
@@ -28,9 +29,22 @@ public class Admin extends Account {
         this.flightCollection = flightCollection;
     }
 
-    //TODO: ADD THE PARAMETERS REQUIRED TO CREATE A NEW FLIGHT
-    public void addNewFlight(Flight f) {
-        flightCollection.addFlight(f);
+    public void addNewFlight(String origin, String dest, int ecoRow, int ecoCol, float ecoFare, int busRow, int busCol,
+                             float busFare, int firstRow, int firstCol, float firstFare, LocalDateTime dep,
+                             LocalDateTime arrival) {
+        flightCollection.addFlight(origin,
+                dest,
+                ecoRow,
+                ecoCol,
+                ecoFare,
+                busRow,
+                busCol,
+                busFare,
+                firstRow,
+                firstCol,
+                firstFare,
+                dep,
+                arrival);
     }
 
     public Flight removeFlight(String c) {
@@ -41,8 +55,8 @@ public class Admin extends Account {
         return flightCollection.searchFlight(s);
     }
 
-    public void updateFlight(String c, Flight newFlight) {
-        flightCollection.updateFlight(c, newFlight);
+    public void updateFlight(Flight flight, String origin, String dept, LocalDateTime arrival, LocalDateTime departure) {
+        flightCollection.updateFlight(flight, origin, dept, arrival, departure);
     }
 
     public ArrayList<Flight> getFlights() {

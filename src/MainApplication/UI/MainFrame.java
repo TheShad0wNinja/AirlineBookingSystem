@@ -6,7 +6,7 @@ public class MainFrame extends JFrame {
     final protected String fontFamily;
     public MainFrame() {
         fontFamily = "SansSerif";
-        this.setSize(600, 600);
+        this.setSize(600, 700);
         this.setLocationRelativeTo(null);
     }
 

@@ -51,4 +51,8 @@ public class Authentication {
     public void logout() {
         currentAccount = null;
     }
+
+    public void updateData() {
+        accountCollection.updateData();
+    }
 }

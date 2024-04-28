@@ -69,16 +69,7 @@ public class AccountCollection {
         return null;
     }
 
-    //TODO: ADD ERROR HANDLING FOR INVALID INPUT
-    public Account updateAccount(String oldUsername, Account update) {
-        for (Account account : accounts) {
-            if (account.getUsername().equals(oldUsername)) {
-                account.setUsername(update.getUsername());
-                account.setPassword(update.getPassword());
-                DataStore.saveData("Accounts.txt", accounts);
-                return account;
-            }
-        }
-        return null;
+    public void updateData() {
+        DataStore.saveData("Accounts.txt", accounts);
     }
 }

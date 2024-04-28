@@ -22,6 +22,7 @@ public class PassengerUI extends MainFrame {
         ManageBtn = new javax.swing.JButton();
         LogoutBtn = new javax.swing.JButton();
         ExitBtn = new javax.swing.JButton();
+        FlightsBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +88,14 @@ public class PassengerUI extends MainFrame {
             }
         });
 
+        FlightsBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        FlightsBtn.setText("View Flights");
+        FlightsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FlightsBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,10 +103,11 @@ public class PassengerUI extends MainFrame {
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(FlightsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(ExitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(LogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(ManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                                        .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(BookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(ViewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,16 +127,15 @@ public class PassengerUI extends MainFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
                                 .addComponent(ViewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(LogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(FlightsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ExitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(54, Short.MAX_VALUE))
+                                .addComponent(ExitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         this.setVisible(true);
@@ -134,15 +143,18 @@ public class PassengerUI extends MainFrame {
 
 
     private void ViewBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        new ViewBookingsUI(auth);
+        this.dispose();
     }
 
     private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        new AddBookingUI(auth);
+        this.dispose();
     }
 
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        new RemoveBookingUI(auth);
+        this.dispose();
     }
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,17 +162,23 @@ public class PassengerUI extends MainFrame {
     }
 
     private void ManageBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        new ManageAccountUI(auth);
+        this.dispose();
     }
 
     private void LogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {
         auth.logout();
-        new SignUpUI(auth);
+        new SignInUI(auth);
         this.dispose();
     }
 
     private void ExitBtnActionPerformed(java.awt.event.ActionEvent evt) {
         System.exit(1);
+    }
+
+    private void FlightsBtnActionPerformed(java.awt.event.ActionEvent evt) {
+        new ViewFlightsUI(auth);
+        this.dispose();
     }
 
     // Variables declaration - do not modify
@@ -173,5 +191,6 @@ public class PassengerUI extends MainFrame {
     private javax.swing.JButton ViewBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton FlightsBtn;
     // End of variables declaration
 }
